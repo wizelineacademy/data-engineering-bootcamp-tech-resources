@@ -16,6 +16,7 @@ steps:
       - -exc
       - |
         cd week-01/build_your_own_infrastructure/gcp/provision/terraform
+        mkdir credentials
         cp /secrets/gcp-credentials credentials/account.json
         terraform $_ACTION -var-file=./vars/env.$_ENV.auto.tfvars
     volumes:
