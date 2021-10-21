@@ -1,0 +1,32 @@
+# Run terraform actions on your behalf
+steps:
+  - id: berglas
+    name: us-docker.pkg.dev/berglas/berglas/berglas:latest
+    env:
+      - CREDENTIALS=berglas://${_BUCKET_ID}/gcp-credentials?destination=/secrets/gcp-credentials
+    args: [ "exec", "--", "/bin/sh" ]
+    volumes:
+      - name: secrets
+        path: /secrets
+
+  - name: gcr.io/de-academy-w01/gcloud-terraform:latest
+    id: 'terraform_deploy'
+    entrypoint: /bin/bash
+    args:
+      - -exc
+      - |
+        cd week-01/build_your_own_infrastructure/gcp/provision/terraform
+        cp /secrets/gcp-credentials credentials/account.json
+        terraform $_ACTION -var-file=./vars/env.$_ENV.auto.tfvars
+    volumes:
+      - name: secrets
+        path: /secrets
+
+substitutions:
+  _ACTION: "plan"
+  _ENV: "dev"
+
+options:
+  substitution_option: 'ALLOW_LOOSE'
+
+timeout: 3600s

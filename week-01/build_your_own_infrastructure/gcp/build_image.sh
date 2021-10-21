@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-PROJECT_ID="de-academy-w01"
+PROJECT_ID=$(gcloud config get-value project)
 IMAGE_NAME="gcr.io/$PROJECT_ID/gcloud-terraform"
 IMAGE_TAG="latest"
 TF_VERSION="0.14.10"
