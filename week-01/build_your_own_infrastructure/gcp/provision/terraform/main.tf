@@ -24,12 +24,12 @@ module "cloud_functions" {
 }
 
 # ------------------- Cloud Scheduler --------------------------------- #
-module "cloud_scheduler" {
-  source                             = "./modules/cloud_scheduler"
-  env                                = var.env
-  project_id                         = var.project_id
-  cloud_functions_data_ingestion_zip = module.buckets.cloud_functions_data_ingestion_zip
-}
+# module "cloud_scheduler" {
+#   source                             = "./modules/cloud_scheduler"
+#   env                                = var.env
+#   project_id                         = var.project_id
+#   cloud_functions_data_ingestion_zip = module.buckets.cloud_functions_data_ingestion_zip
+# }
 
 # ------------------- BigQuery transfer, dataset, tables -------------- #
 # module "bigquery" {
