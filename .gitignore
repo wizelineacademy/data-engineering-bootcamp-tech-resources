@@ -167,6 +167,7 @@ override.tf.json
 
 # IntelliJ config files
 .idea
+**.DS_Store
 
 # Credentials 
 **credentials**
