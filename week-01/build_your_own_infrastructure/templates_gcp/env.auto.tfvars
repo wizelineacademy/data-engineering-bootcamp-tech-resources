@@ -1,0 +1,6 @@
+project_id = "wz-de-academy"
+region     = "us-central1"
+env        = "dev"
+zone       = "us-central1-f"
+user_name  = "dan"
+user_email = "daniel.morales@wizeline.com"
